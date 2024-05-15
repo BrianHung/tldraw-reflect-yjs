@@ -6,8 +6,8 @@ import {
   createSessionStateSnapshotSignal,
   loadSessionStateSnapshotIntoStore,
   react,
-} from "@tldraw/tldraw";
-import "@tldraw/tldraw/tldraw.css";
+} from "tldraw";
+import "tldraw/tldraw.css";
 import { useLoaderData } from "react-router-dom";
 import { Provider } from "reflect-yjs";
 import { Reflect } from "@rocicorp/reflect/client";
@@ -19,7 +19,7 @@ import { CodeBlockShapeTool } from "./shapes/codeblock/CodeBlockShapeTool";
 import { CodeBlockShapeUtil } from "./shapes/codeblock/CodeBlockShapeUtil";
 import { TextBlockShapeTool } from "./shapes/textblock/TextBlockShapeTool";
 import { TextBlockShapeUtil } from "./shapes/textblock/TextBlockShapeUtil";
-import { uiOverrides } from "./uiOverrides";
+import { components, uiOverrides } from "./uiOverrides";
 import { M, mutators } from "../reflect/mutators";
 import React from "react";
 import { YjsContext } from "./hooks/useYjs";
@@ -71,29 +71,6 @@ export const File = React.memo(() => {
   const onMount = useCallback(
     function onMount(editor: Editor) {
       editor.user.updateUserPreferences(user);
-
-      const store = editor.store;
-      const disposables = new Set<() => void>();
-
-      /**
-       * Persist session state in localStorage.
-       */
-      const session = JSON.parse(localStorage.getItem("TLDRAW_INSTANCE_STATE") || "null");
-      if (session) loadSessionStateSnapshotIntoStore(store, session);
-      const sessionStateSnapshot = createSessionStateSnapshotSignal(store);
-      disposables.add(
-        react("when session state changes", function syncSessionStateToLocalStorage() {
-          const session = sessionStateSnapshot.get();
-          requestAnimationFrame(() => {
-            if (session) localStorage.setItem("TLDRAW_INSTANCE_STATE", JSON.stringify(session));
-          });
-        })
-      );
-
-      return () => {
-        disposables.forEach(dispose => dispose());
-        disposables.clear();
-      };
     },
     [user]
   );
@@ -101,7 +78,15 @@ export const File = React.memo(() => {
   return (
     <YjsContext.Provider value={yjsContext}>
       <div style={{ position: "fixed", inset: 0 }}>
-        <Tldraw store={store} autoFocus shapeUtils={shapeUtils} tools={tools} overrides={uiOverrides} onMount={onMount}>
+        <Tldraw
+          store={store}
+          autoFocus
+          shapeUtils={shapeUtils}
+          tools={tools}
+          overrides={uiOverrides}
+          onMount={onMount}
+          components={components}
+        >
           <UrlState />
         </Tldraw>
       </div>

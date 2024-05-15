@@ -2,7 +2,7 @@ import type { ReflectServerOptions } from "@rocicorp/reflect/server";
 import { M, mutators } from "./mutators.js";
 
 // worker fails to deploy if this is imported
-// import { InstancePresenceRecordType } from '@tldraw/tldraw';
+// import { InstancePresenceRecordType } from 'tldraw';
 
 function makeOptions(): ReflectServerOptions<M> {
   return {

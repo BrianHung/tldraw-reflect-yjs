@@ -1,7 +1,7 @@
-import { StateNode } from '@tldraw/tldraw';
-import { TLShape } from '@tldraw/tlschema';
-import { Idle } from './children/Idle';
-import { Pointing } from './children/Pointing';
+import { StateNode } from "tldraw";
+import { TLShape } from "@tldraw/tlschema";
+import { Idle } from "./children/Idle";
+import { Pointing } from "./children/Pointing";
 
 /**
  * Forked version which selects and edit on create.
@@ -9,11 +9,11 @@ import { Pointing } from './children/Pointing';
  * @public
  */
 export abstract class BaseBlockShapeTool extends StateNode {
-	static override id = 'block';
-	static override initial = 'idle';
-	static override children = () => [Idle, Pointing];
+  static override id = "block";
+  static override initial = "idle";
+  static override children = () => [Idle, Pointing];
 
-	abstract override shapeType: string;
+  abstract override shapeType: string;
 
-	onCreate?: (_shape: TLShape | null) => void | null;
+  onCreate?: (_shape: TLShape | null) => void | null;
 }

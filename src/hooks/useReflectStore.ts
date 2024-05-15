@@ -13,7 +13,7 @@ import {
   react,
   setUserPreferences,
   transact,
-} from "@tldraw/tldraw";
+} from "tldraw";
 import { useEffect, useState } from "react";
 import { ReadTransaction } from "@rocicorp/reflect";
 import { Reflect } from "@rocicorp/reflect/client";
