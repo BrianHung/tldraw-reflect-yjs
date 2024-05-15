@@ -19,7 +19,7 @@ import { CodeBlockShapeTool } from "./shapes/codeblock/CodeBlockShapeTool";
 import { CodeBlockShapeUtil } from "./shapes/codeblock/CodeBlockShapeUtil";
 import { TextBlockShapeTool } from "./shapes/textblock/TextBlockShapeTool";
 import { TextBlockShapeUtil } from "./shapes/textblock/TextBlockShapeUtil";
-import { components, uiOverrides } from "./uiOverrides";
+import { components, customAssetUrls, uiOverrides } from "./uiOverrides";
 import { M, mutators } from "../reflect/mutators";
 import React from "react";
 import { YjsContext } from "./hooks/useYjs";
@@ -86,6 +86,7 @@ export const File = React.memo(() => {
           overrides={uiOverrides}
           onMount={onMount}
           components={components}
+          assetUrls={customAssetUrls}
         >
           <UrlState />
         </Tldraw>

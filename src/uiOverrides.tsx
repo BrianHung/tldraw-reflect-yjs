@@ -27,13 +27,14 @@ import {
   LineToolbarItem,
   HighlightToolbarItem,
   LaserToolbarItem,
+  TLUiAssetUrlOverrides,
 } from "tldraw";
 
 export const uiOverrides: TLUiOverrides = {
   tools(editor, tools) {
     tools.codeblock = {
       id: "codeblock",
-      icon: "code",
+      icon: "tool-codeblock",
       label: "CodeBlock",
       kbd: "c",
       onSelect: () => {
@@ -42,7 +43,7 @@ export const uiOverrides: TLUiOverrides = {
     };
     tools.textblock = {
       id: "textblock",
-      icon: "tool-text",
+      icon: "tool-textblock",
       label: "TextBlock",
       kbd: "t",
       onSelect: () => {
@@ -88,5 +89,12 @@ export const components: TLComponents = {
         <LaserToolbarItem />
       </DefaultToolbar>
     );
+  },
+};
+
+export const customAssetUrls: TLUiAssetUrlOverrides = {
+  icons: {
+    "tool-textblock": "/textblock.svg",
+    "tool-codeblock": "/codeblock.svg",
   },
 };

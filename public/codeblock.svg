@@ -1,0 +1,13 @@
+<svg width="40" height="40" viewBox="4 4 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 15L6 20L12 25" stroke="black" stroke-opacity="0.9" stroke-width="2" stroke-linecap="square"></path>
+  <path d="M28 15L34 20L28 25" stroke="black" stroke-opacity="0.9" stroke-width="2" stroke-linecap="square"></path>
+  <rect
+    x="22.2002"
+    y="10"
+    width="2"
+    height="20"
+    transform="rotate(18 22.2002 10)"
+    fill="black"
+    fill-opacity="0.9"
+  ></rect>
+</svg>
